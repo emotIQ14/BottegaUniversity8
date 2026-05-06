@@ -1,30 +1,39 @@
-# 🎓 Bottega University — Repositorio de Ander Bilbao Castejón
+# 📘 CheckPoint 8 — Documentación de JavaScript
 
-Bienvenido a mi repositorio personal del programa de **Full Stack Web Development** de Bottega University.
-Aquí iré subiendo todos los CheckPoints, ejercicios y proyectos que vaya completando a lo largo del bootcamp.
-
----
-
-## 📚 Contenido del repositorio
-
-| CheckPoint | Tema principal | Estado |
-|-----------|---------------|--------|
-| [CheckPoint 8](./CheckPoint8/) | Conceptos avanzados de JavaScript (bucles, scope, async/await, POO, etc.) | ✅ Completado |
+> **Formato de la documentación: página web HTML.**
+> No se ha usado PDF, Word ni Markdown como formato de la documentación.
+> Este `README.md` solo cumple la función estándar de presentación del repositorio en GitHub.
 
 ---
 
-## 🚀 CheckPoint 8 — Documentación de JavaScript
+## 🌐 Acceder a la documentación
 
-El CheckPoint 8 es **una documentación completa y profesional** sobre los conceptos clave de JavaScript moderno, presentada en formato web HTML interactivo y archivos Markdown.
+### ▶️ Versión online (recomendada)
 
-👉 **[Acceder al CheckPoint 8](./CheckPoint8/README.md)**
+**👉 https://emotiq14.github.io/BottegaUniversity8/**
 
-🌐 **[Ver la documentación online (GitHub Pages)](https://emotiq14.github.io/BottegaUniversity8/CheckPoint8/docs/)**
+La documentación está publicada como sitio web mediante **GitHub Pages**. Se accede directamente desde el navegador, sin necesidad de descargar nada.
 
-### Conceptos cubiertos
+### 💻 Versión local
+
+Clona el repositorio y abre `index.html` con tu navegador:
+
+```bash
+git clone https://github.com/emotIQ14/BottegaUniversity8.git
+cd BottegaUniversity8
+open index.html      # macOS
+xdg-open index.html  # Linux
+start index.html     # Windows
+```
+
+---
+
+## 📚 Conceptos cubiertos en la documentación HTML
+
+La página web `index.html` desarrolla en profundidad los 8 conceptos solicitados:
 
 1. ¿Qué tipos de bucles hay en JavaScript?
-2. ¿Cuáles son las diferencias entre `const`, `let` y `var`?
+2. Diferencias entre `const`, `let` y `var`
 3. ¿Qué es una función de flecha?
 4. ¿Qué es la deconstrucción de variables?
 5. ¿Qué hace el operador de extensión (spread)?
@@ -32,31 +41,43 @@ El CheckPoint 8 es **una documentación completa y profesional** sobre los conce
 7. ¿Qué es una promesa en JavaScript?
 8. ¿Qué hacen `async` y `await` por nosotros?
 
-### Ejercicio práctico incluido
-
-- Bucle `for` que imprime los nombres de una lista
-- Bucle `while` recorriendo la misma lista (con contador para evitar bucles infinitos)
-- Función de flecha que devuelve `"Hola mundo"`
+Cada concepto incluye: definición, **por qué se usa**, **para qué se usa**, **sintaxis**, **ejemplos prácticos**, **tablas comparativas**, **buenas prácticas** y **errores comunes**.
 
 ---
 
-## 👤 Sobre mí
+## 💻 Ejercicio práctico
 
-- **Nombre:** Ander Bilbao Castejón
-- **Email:** anderbilbaocastejon@gmail.com
-- **Programa:** Full Stack Web Development — Bottega University
-- **GitHub:** [@emotIQ14](https://github.com/emotIQ14)
+Los tres ejercicios solicitados están en la carpeta [`ejercicios/`](./ejercicios/) y también accesibles de forma interactiva en:
 
----
+**👉 https://emotiq14.github.io/BottegaUniversity8/ejercicios/ejercicios.html**
 
-## 🛠️ Tecnologías y herramientas
-
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow?logo=javascript&logoColor=black)
-![HTML5](https://img.shields.io/badge/HTML5-orange?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-blue?logo=css3&logoColor=white)
-![Markdown](https://img.shields.io/badge/Markdown-black?logo=markdown&logoColor=white)
-![Git](https://img.shields.io/badge/Git-red?logo=git&logoColor=white)
+| # | Ejercicio | Archivo |
+|---|-----------|---------|
+| 1 | Bucle `for` que imprime los nombres de la lista | [ejercicio1-for.js](./ejercicios/ejercicio1-for.js) |
+| 2 | Bucle `while` con la misma lista (con contador) | [ejercicio2-while.js](./ejercicios/ejercicio2-while.js) |
+| 3 | Función de flecha que devuelve `"Hola mundo"` | [ejercicio3-arrow.js](./ejercicios/ejercicio3-arrow.js) |
 
 ---
 
-> *"El conocimiento es el único recurso que crece cuando se comparte."*
+## 🗂️ Estructura del repositorio
+
+```
+BottegaUniversity8/
+├── index.html        ← 🌐 Documentación HTML completa (FORMATO PRINCIPAL)
+├── styles.css        ← Estilos modernos
+├── script.js         ← Navegación interactiva y resaltado de sintaxis
+└── ejercicios/
+    ├── ejercicio1-for.js
+    ├── ejercicio2-while.js
+    ├── ejercicio3-arrow.js
+    └── ejercicios.html   ← Visualizador interactivo de ejercicios
+```
+
+---
+
+## 👤 Autor
+
+**Ander Bilbao Castejón**
+📧 anderbilbaocastejon@gmail.com
+🐙 [@emotIQ14](https://github.com/emotIQ14)
+🎓 Bottega University · Full Stack Web Development · 2026

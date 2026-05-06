@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Documentación HTML completa de JavaScript moderno: bucles, scope, async/await, POO y más. CheckPoint 8 de Bottega University, por Ander Bilbao Castejón.">
+  <meta name="author" content="Ander Bilbao Castejón">
+  <title>📘 CheckPoint 8 — Documentación de JavaScript | Ander Bilbao</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='80'%3E📘%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+  <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+
+  <!-- ═══════════════ SIDEBAR ═══════════════ -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>📘 CheckPoint 8</h2>
+      <p>Documentación de JavaScript</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#inicio"><span class="nav-icon">🏠</span> Inicio</a></li>
+        <li><a href="#bucles"><span class="nav-icon">🔁</span> 1. Bucles</a></li>
+        <li><a href="#variables"><span class="nav-icon">🔠</span> 2. const, let, var</a></li>
+        <li><a href="#arrow"><span class="nav-icon">🏹</span> 3. Arrow Functions</a></li>
+        <li><a href="#destructuring"><span class="nav-icon">📦</span> 4. Destructuring</a></li>
+        <li><a href="#spread"><span class="nav-icon">📤</span> 5. Spread Operator</a></li>
+        <li><a href="#poo"><span class="nav-icon">🏗️</span> 6. POO</a></li>
+        <li><a href="#promesas"><span class="nav-icon">🤝</span> 7. Promesas</a></li>
+        <li><a href="#async"><span class="nav-icon">⏳</span> 8. Async / Await</a></li>
+        <li><a href="#ejercicios"><span class="nav-icon">💻</span> Ejercicios</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <p>Por <strong>Ander Bilbao Castejón</strong></p>
+      <p>Bottega University · 2026</p>
+    </div>
+  </aside>
+
+  <!-- ═══════════════ CONTENIDO ═══════════════ -->
+  <main class="content">
+
+    <!-- ─── HERO ─── -->
+    <section id="inicio" class="hero">
+      <div class="hero-badge">📚 Material educativo · Bottega University</div>
+      <h1>Documentación de JavaScript</h1>
+      <p class="subtitle">
+        Una guía completa, didáctica y visual sobre los conceptos fundamentales del JavaScript moderno.
+        Construida desde cero como página web HTML pensada para personas que se inician en el desarrollo.
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number">8</div>
+          <div class="stat-label">Conceptos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">80+</div>
+          <div class="stat-label">Ejemplos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Ejercicios</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         1. BUCLES
+         ═══════════════════════════════════════════════════════════════ -->
+    <section id="bucles">
+      <h2><span class="section-number">1</span> ¿Qué tipos de bucles hay en JavaScript?</h2>
+
+      <p>Los <strong>bucles</strong> (o <em>loops</em>) son estructuras de control que <strong>ejecutan un bloque de código repetidamente</strong> mientras se cumpla una condición. Son fundamentales para automatizar tareas que de otra forma habría que escribir decenas o miles de veces.</p>
+
+      <blockquote>
+        💡 Imagina tener que saludar a 100 personas. Sin bucles, escribirías <code>console.log("Hola")</code> cien veces. Con un bucle, lo haces en 3 líneas.
+      </blockquote>
+
+      <h3>¿Cómo funciona un bucle?</h3>
+      <p>Un bucle siempre tiene tres componentes: una <strong>condición de entrada</strong>, un <strong>bloque de código</strong> que se ejecuta y una <strong>actualización</strong> de la variable de control para que la condición eventualmente se vuelva falsa y el bucle termine.</p>
+
+      <pre data-lang="esquema"><code>┌────────────────────────────────────┐
+│  ¿La condición se cumple?          │
+│           │                        │
+│      ┌────┴────┐                   │
+│      │ SÍ      │ NO                │
+│      ▼         ▼                   │
+│   Ejecuta    Sale del              │
+│   el código  bucle                 │
+│      │                             │
+│      └──── vuelve a comprobar      │
+└────────────────────────────────────┘</code></pre>
+
+      <h3>Los 6 tipos principales</h3>
+
+      <h4>1. Bucle <code>for</code></h4>
+      <p>Es el bucle más clásico y versátil. Se usa cuando <strong>conoces de antemano cuántas veces</strong> quieres iterar. Tiene tres partes separadas por punto y coma: inicialización, condición y actualización.</p>
+
+      <pre data-lang="javascript"><code>// Sintaxis general
+for (inicialización; condición; actualización) {
+  // código a repetir
+}
+
+// Ejemplo: imprimir números del 1 al 5
+for (let i = 1; i &lt;= 5; i++) {
+  console.log("Número:", i);
+}
+
+// Salida:
+// Número: 1
+// Número: 2
+// Número: 3
+// Número: 4
+// Número: 5</code></pre>
+
+      <p><strong>¿Cuándo usarlo?</strong> Cuando sabes el número exacto de iteraciones, para recorrer arrays con índice, o cuando necesitas control total sobre el contador.</p>
+
+      <h4>2. Bucle <code>while</code></h4>
+      <p>Repite un bloque <strong>mientras la condición sea verdadera</strong>. Es útil cuando NO sabes cuántas veces vas a iterar.</p>
+
+      <pre data-lang="javascript"><code>// Sintaxis general
+while (condición) {
+  // código a repetir
+}
+
+// Ejemplo: simulación de un coche frenando
+let energia = 100;
+
+while (energia &gt; 0) {
+  console.log("Energía restante:", energia);
+  energia -= 25;
+}
+
+// Salida:
+// Energía restante: 100
+// Energía restante: 75
+// Energía restante: 50
+// Energía restante: 25</code></pre>
+
+      <div class="alert alert-warning">
+        ⚠️ <strong>Cuidado con los bucles infinitos:</strong> si la condición nunca se vuelve falsa, el bucle se ejecutará para siempre y bloqueará el navegador. Asegúrate siempre de modificar la variable de control dentro del bucle.
+      </div>
+
+      <h4>3. Bucle <code>do...while</code></h4>
+      <p>Similar a <code>while</code>, pero <strong>siempre se ejecuta al menos una vez</strong>, porque la condición se evalúa al final del bloque.</p>
+
+      <pre data-lang="javascript"><code>// Sintaxis general
+do {
+  // código a repetir
+} while (condición);
+
+// Ejemplo
+let intento = 0;
+
+do {
+  console.log("Intento número:", intento);
+  intento++;
+} while (intento &lt; 3);
+
+// Salida:
+// Intento número: 0
+// Intento número: 1
+// Intento número: 2</code></pre>
+
+      <p><strong>¿Cuándo usarlo?</strong> Cuando quieres garantizar que el bloque se ejecute al menos una vez, por ejemplo en validaciones de entrada de usuario (pedir datos hasta que sean correctos).</p>
+
+      <h4>4. Bucle <code>for...of</code></h4>
+      <p>Recorre los <strong>valores</strong> de objetos iterables (arrays, strings, Map, Set...). Introducido en ES6, su sintaxis es muy limpia.</p>
+
+      <pre data-lang="javascript"><code>// Sintaxis general
+for (const elemento of iterable) {
+  // código
+}
+
+// Ejemplo con array
+const frutas = ["manzana", "pera", "uva"];
+
+for (const fruta of frutas) {
+  console.log(fruta);
+}
+
+// Ejemplo con string
+for (const letra of "Ander") {
+  console.log(letra);
+}
+// A, n, d, e, r</code></pre>
+
+      <p><strong>Ventajas:</strong> sintaxis muy limpia, no necesitas gestionar el índice manualmente y funciona con cualquier iterable.</p>
+
+      <h4>5. Bucle <code>for...in</code></h4>
+      <p>Recorre las <strong>propiedades enumerables</strong> de un objeto. Devuelve las <strong>claves</strong>, no los valores.</p>
+
+      <pre data-lang="javascript"><code>// Sintaxis general
+for (const clave in objeto) {
+  // código
+}
+
+// Ejemplo
+const persona = {
+  nombre: "Ander",
+  edad: 28,
+  ciudad: "Bilbao"
+};
+
+for (const propiedad in persona) {
+  console.log(`${propiedad}: ${persona[propiedad]}`);
+}
+
+// Salida:
+// nombre: Ander
+// edad: 28
+// ciudad: Bilbao</code></pre>
+
+      <div class="alert alert-info">
+        💡 <strong>Importante:</strong> <code>for...in</code> está pensado para objetos, NO para arrays. Para arrays usa siempre <code>for...of</code> o métodos como <code>forEach</code>.
+      </div>
+
+      <h4>6. Método <code>forEach()</code></h4>
+      <p>No es un bucle como tal, sino un método de array. Recibe una función que se ejecuta una vez por cada elemento.</p>
+
+      <pre data-lang="javascript"><code>// Sintaxis general
+array.forEach((elemento, índice, array) =&gt; {
+  // código
+});
+
+// Ejemplo
+const colores = ["rojo", "verde", "azul"];
+
+colores.forEach((color, indice) =&gt; {
+  console.log(`${indice}: ${color}`);
+});
+
+// Salida:
+// 0: rojo
+// 1: verde
+// 2: azul</code></pre>
+
+      <p><strong>Limitaciones:</strong> no se puede usar <code>break</code> ni <code>continue</code> dentro, y no retorna valor.</p>
+
+      <h3>Tabla comparativa</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Bucle</th>
+            <th>Cuándo usarlo</th>
+            <th>break/continue</th>
+            <th>Trabaja con</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>for</code></td><td>Sabes el número de iteraciones</td><td>✅</td><td>Cualquier cosa</td></tr>
+          <tr><td><code>while</code></td><td>Iteras hasta que algo cambie</td><td>✅</td><td>Cualquier cosa</td></tr>
+          <tr><td><code>do...while</code></td><td>Necesitas mínimo una iteración</td><td>✅</td><td>Cualquier cosa</td></tr>
+          <tr><td><code>for...of</code></td><td>Recorres valores de iterables</td><td>✅</td><td>Arrays, strings, Set, Map</td></tr>
+          <tr><td><code>for...in</code></td><td>Recorres claves de objetos</td><td>✅</td><td>Objetos</td></tr>
+          <tr><td><code>forEach</code></td><td>Iteras un array funcional</td><td>❌</td><td>Solo Arrays</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Palabras clave útiles dentro de bucles</h3>
+      <p>Dentro de un bucle puedes usar dos palabras clave especiales:</p>
+      <ul>
+        <li><code>break</code> → sale del bucle inmediatamente.</li>
+        <li><code>continue</code> → salta a la siguiente iteración sin ejecutar el resto del bloque.</li>
+      </ul>
+
+      <pre data-lang="javascript"><code>for (let i = 0; i &lt; 10; i++) {
+  if (i === 5) break;        // sale del bucle al llegar a 5
+  if (i % 2 === 0) continue; // salta los pares
+  console.log(i);            // imprime 1, 3
+}</code></pre>
+
+      <div class="alert alert-success">
+        ✅ <strong>Resumen:</strong> los bucles ahorran código y automatizan tareas repetitivas. <code>for</code> y <code>while</code> son los más universales, <code>for...of</code> es el más recomendado para arrays modernos. Siempre asegúrate de que la condición de salida se va a cumplir.
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         2. CONST, LET, VAR
+         ═══════════════════════════════════════════════════════════════ -->
+    <section id="variables">
+      <h2><span class="section-number">2</span> Diferencias entre <code>const</code>, <code>let</code> y <code>var</code></h2>
+
+      <p>Para declarar variables en JavaScript existen tres palabras clave: <code>var</code>, <code>let</code> y <code>const</code>. Aunque parezcan similares, tienen comportamientos muy distintos y elegir la correcta es <strong>fundamental</strong> para escribir código limpio y sin errores.</p>
+
+      <h3>¿Qué es declarar una variable?</h3>
+      <p>Declarar una variable significa <strong>reservar un espacio en memoria</strong> para guardar un valor que podremos usar más adelante.</p>
+
+      <pre data-lang="javascript"><code>let nombre = "Ander";
+console.log(nombre); // "Ander"</code></pre>
+
+      <h3>1. <code>var</code> — La forma antigua (ES5 y anteriores)</h3>
+      <p><code>var</code> es la forma original de declarar variables en JavaScript. <strong>Hoy en día se considera obsoleta</strong> y se recomienda evitarla.</p>
+
+      <pre data-lang="javascript"><code>var saludo = "Hola";
+saludo = "Adiós";          // Se puede reasignar
+var saludo = "Buenos días"; // Incluso se puede redeclarar (¡peligroso!)</code></pre>
+
+      <p><strong>Características:</strong></p>
+      <ul>
+        <li>🌍 Tiene <strong>scope de función</strong> (no respeta los bloques <code>{}</code>).</li>
+        <li>🔄 Se puede <strong>reasignar</strong> y <strong>redeclarar</strong>.</li>
+        <li>⬆️ Sufre <strong>hoisting</strong> (se eleva al inicio del scope, pero queda como <code>undefined</code>).</li>
+      </ul>
+
+      <h3>2. <code>let</code> — La forma moderna (ES6/2015)</h3>
+      <p><code>let</code> es la palabra clave moderna para declarar variables que <strong>van a cambiar de valor</strong>.</p>
+
+      <pre data-lang="javascript"><code>let edad = 28;
+edad = 29;          // ✅ Se puede reasignar
+// let edad = 30;   // ❌ Error: ya está declarada en este scope</code></pre>
+
+      <p><strong>Características:</strong></p>
+      <ul>
+        <li>📦 Tiene <strong>scope de bloque</strong> (respeta los <code>{}</code>).</li>
+        <li>🔄 Se puede <strong>reasignar</strong>, pero <strong>NO redeclarar</strong> en el mismo scope.</li>
+        <li>⏸️ Sufre hoisting, pero NO se puede usar antes de la declaración (Temporal Dead Zone).</li>
+      </ul>
+
+      <h3>3. <code>const</code> — Para constantes (ES6/2015)</h3>
+      <p><code>const</code> se usa para declarar variables cuyo valor <strong>no va a cambiar</strong>.</p>
+
+      <pre data-lang="javascript"><code>const PI = 3.14159;
+// PI = 3.14; ❌ Error: no se puede reasignar</code></pre>
+
+      <p><strong>Características:</strong></p>
+      <ul>
+        <li>📦 Tiene <strong>scope de bloque</strong>.</li>
+        <li>🔒 <strong>NO se puede reasignar</strong> ni redeclarar.</li>
+        <li>⚠️ <strong>Debe inicializarse en la declaración</strong>.</li>
+        <li>🤔 <strong>Atención</strong>: si guardas un objeto o array, sus contenidos <strong>sí pueden cambiar</strong> (solo la referencia es constante).</li>
+      </ul>
+
+      <pre data-lang="javascript"><code>const persona = { nombre: "Ander" };
+persona.nombre = "Pablo"; // ✅ Funciona (modificas la propiedad)
+persona.edad = 28;        // ✅ Funciona
+// persona = { nombre: "Otro" }; ❌ Error (cambias la referencia)</code></pre>
+
+      <h3>El concepto del scope (alcance)</h3>
+      <p>El scope determina <strong>dónde es accesible</strong> una variable. Aquí está la mayor diferencia entre <code>var</code>, <code>let</code> y <code>const</code>.</p>
+
+      <pre data-lang="javascript"><code>function ejemplo() {
+  if (true) {
+    var a = 1;   // scope de función
+    let b = 2;   // scope de bloque
+    const c = 3; // scope de bloque
+  }
+  console.log(a); // ✅ 1
+  console.log(b); // ❌ ReferenceError
+  console.log(c); // ❌ ReferenceError
+}</code></pre>
+
+      <h3>Hoisting (elevación)</h3>
+      <p>JavaScript <strong>eleva</strong> las declaraciones al inicio del scope, pero se comporta diferente con cada palabra clave.</p>
+
+      <pre data-lang="javascript"><code>// Con var
+console.log(x); // undefined (no da error)
+var x = 5;
+
+// Con let / const
+console.log(y); // ❌ ReferenceError: Cannot access 'y' before initialization
+let y = 5;</code></pre>
+
+      <p>Esto se debe a la <strong>Temporal Dead Zone (TDZ)</strong>: la variable existe, pero no se puede usar hasta que se declare.</p>
+
+      <h3>Tabla comparativa completa</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Característica</th>
+            <th><code>var</code></th>
+            <th><code>let</code></th>
+            <th><code>const</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Año</td><td>ES1 (1997)</td><td>ES6 (2015)</td><td>ES6 (2015)</td></tr>
+          <tr><td>Scope</td><td>Función</td><td>Bloque</td><td>Bloque</td></tr>
+          <tr><td>¿Reasignable?</td><td>✅ Sí</td><td>✅ Sí</td><td>❌ No</td></tr>
+          <tr><td>¿Redeclarable?</td><td>✅ Sí</td><td>❌ No</td><td>❌ No</td></tr>
+          <tr><td>Hoisting</td><td>✅ undefined</td><td>✅ TDZ</td><td>✅ TDZ</td></tr>
+          <tr><td>Debe inicializarse</td><td>❌ No</td><td>❌ No</td><td>✅ Sí</td></tr>
+          <tr><td>¿Se añade a window?</td><td>✅ Sí</td><td>❌ No</td><td>❌ No</td></tr>
+          <tr><td>Recomendado en 2026</td><td>❌ Evitar</td><td>✅ Sí</td><td>✅ Sí (preferir)</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Bug clásico con <code>var</code></h3>
+      <pre data-lang="javascript"><code>// Con var (problema)
+for (var i = 0; i &lt; 3; i++) {
+  setTimeout(() =&gt; console.log(i), 100);
+}
+// Imprime: 3, 3, 3 ¡no 0, 1, 2!
+
+// Con let (correcto)
+for (let i = 0; i &lt; 3; i++) {
+  setTimeout(() =&gt; console.log(i), 100);
+}
+// Imprime: 0, 1, 2 ✅</code></pre>
+
+      <div class="alert alert-success">
+        ✅ <strong>Regla de oro:</strong> usa <code>const</code> por defecto. Usa <code>let</code> cuando sepas que la variable va a cambiar. Olvídate de <code>var</code>.
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         3. ARROW FUNCTIONS
+         ═══════════════════════════════════════════════════════════════ -->
+    <section id="arrow">
+      <h2><span class="section-number">3</span> ¿Qué es una función de flecha?</h2>
+
+      <p>Las <strong>funciones de flecha</strong> (<em>arrow functions</em>) son una sintaxis más corta y moderna para crear funciones, introducida en ES6 (2015). Usan el operador <code>=&gt;</code> y se han convertido en una de las características más usadas del lenguaje.</p>
+
+      <h3>Comparación rápida</h3>
+      <pre data-lang="javascript"><code>// Función tradicional
+function saludar(nombre) {
+  return "Hola " + nombre;
+}
+
+// Función de flecha equivalente
+const saludar = (nombre) =&gt; "Hola " + nombre;</code></pre>
+
+      <p>Ambas hacen exactamente lo mismo, pero la segunda ocupa una sola línea y es mucho más limpia.</p>
+
+      <h3>Sintaxis paso a paso</h3>
+
+      <h4>1. Sin parámetros</h4>
+      <pre data-lang="javascript"><code>const saludar = () =&gt; "¡Hola mundo!";
+console.log(saludar()); // "¡Hola mundo!"</code></pre>
+
+      <h4>2. Con un solo parámetro (los paréntesis son opcionales)</h4>
+      <pre data-lang="javascript"><code>const cuadrado = x =&gt; x * x;
+console.log(cuadrado(5)); // 25</code></pre>
+
+      <h4>3. Con varios parámetros</h4>
+      <pre data-lang="javascript"><code>const sumar = (a, b) =&gt; a + b;
+console.log(sumar(3, 4)); // 7</code></pre>
+
+      <h4>4. Con cuerpo de varias líneas (necesitas <code>{}</code> y <code>return</code>)</h4>
+      <pre data-lang="javascript"><code>const calcularPrecio = (precio, iva) =&gt; {
+  const total = precio * (1 + iva);
+  return total.toFixed(2);
+};
+
+console.log(calcularPrecio(100, 0.21)); // "121.00"</code></pre>
+
+      <h4>5. Devolviendo un objeto literal (¡cuidado!)</h4>
+      <p>Cuando quieres devolver un objeto literal directamente, debes envolverlo en paréntesis para que no se confunda con un bloque de código.</p>
+
+      <pre data-lang="javascript"><code>// ❌ Error: las llaves se interpretan como bloque
+const crearUsuario = (nombre) =&gt; { nombre: nombre };
+
+// ✅ Correcto
+const crearUsuario = (nombre) =&gt; ({ nombre: nombre });</code></pre>
+
+      <h3>Características distintivas</h3>
+
+      <h4>1. Retorno implícito</h4>
+      <p>Si el cuerpo es <strong>una sola expresión</strong>, puedes omitir las llaves y la palabra <code>return</code>. La expresión se devuelve automáticamente.</p>
+
+      <h4>2. No tienen su propio <code>this</code></h4>
+      <p>Esta es <strong>la diferencia más importante</strong> entre las funciones tradicionales y las de flecha. Las arrow functions <strong>heredan el <code>this</code></strong> del contexto donde se definen.</p>
+
+      <pre data-lang="javascript"><code>// Problema clásico con función tradicional
+function Contador() {
+  this.numero = 0;
+  setInterval(function() {
+    this.numero++; // ❌ "this" aquí es window, no el Contador
+    console.log(this.numero); // NaN
+  }, 1000);
+}
+
+// Solución con función de flecha
+function Contador() {
+  this.numero = 0;
+  setInterval(() =&gt; {
+    this.numero++; // ✅ "this" es el Contador
+    console.log(this.numero); // 1, 2, 3...
+  }, 1000);
+}</code></pre>
+
+      <h4>3. No pueden usarse como constructores</h4>
+      <pre data-lang="javascript"><code>const Persona = (nombre) =&gt; { this.nombre = nombre; };
+const ander = new Persona("Ander"); // ❌ TypeError</code></pre>
+
+      <h4>4. No tienen el objeto <code>arguments</code></h4>
+      <pre data-lang="javascript"><code>// Si necesitas argumentos variables, usa rest
+const funcion = (...args) =&gt; console.log(args);</code></pre>
+
+      <h3>Tradicional vs. Arrow function</h3>
+      <table>
+        <thead>
+          <tr><th>Característica</th><th>Tradicional <code>function</code></th><th>Arrow <code>=&gt;</code></th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Sintaxis</td><td>Más larga</td><td>Más corta</td></tr>
+          <tr><td><code>this</code> propio</td><td>✅ Sí</td><td>❌ Hereda del scope</td></tr>
+          <tr><td><code>arguments</code></td><td>✅ Sí</td><td>❌ No</td></tr>
+          <tr><td>Hoisting</td><td>✅ Sí</td><td>❌ No (es expresión)</td></tr>
+          <tr><td>¿Constructor con <code>new</code>?</td><td>✅ Sí</td><td>❌ No</td></tr>
+          <tr><td>Retorno implícito</td><td>❌ No</td><td>✅ Sí</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Casos de uso reales</h3>
+
+      <h4>Métodos de array (super común)</h4>
+      <pre data-lang="javascript"><code>const numeros = [1, 2, 3, 4, 5];
+
+// Duplicar cada número
+const duplicados = numeros.map(n =&gt; n * 2);
+// [2, 4, 6, 8, 10]
+
+// Filtrar pares
+const pares = numeros.filter(n =&gt; n % 2 === 0);
+// [2, 4]
+
+// Sumar todos
+const suma = numeros.reduce((acc, n) =&gt; acc + n, 0);
+// 15</code></pre>
+
+      <h4>Callbacks</h4>
+      <pre data-lang="javascript"><code>document.querySelector("button").addEventListener("click", () =&gt; {
+  console.log("Clic detectado");
+});</code></pre>
+
+      <h4>Promesas</h4>
+      <pre data-lang="javascript"><code>fetch("/api/usuarios")
+  .then(res =&gt; res.json())
+  .then(data =&gt; console.log(data))
+  .catch(err =&gt; console.error(err));</code></pre>
+
+      <div class="alert alert-warning">
+        ⚠️ <strong>Cuándo NO usar arrow functions:</strong> como métodos de un objeto, métodos de prototipo, o cuando necesitas <code>this</code> propio o el objeto <code>arguments</code>.
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         4. DESTRUCTURING
+         ═══════════════════════════════════════════════════════════════ -->
+    <section id="destructuring">
+      <h2><span class="section-number">4</span> ¿Qué es la deconstrucción de variables?</h2>
+
+      <p>El <strong>destructuring</strong> (o "deconstrucción") es una característica de ES6 que permite <strong>extraer valores de arrays u objetos</strong> y asignarlos a variables de forma rápida y elegante, todo en una sola línea.</p>
+
+      <h3>Antes y después: el cambio de paradigma</h3>
+
+      <h4>Sin destructuring (forma antigua)</h4>
+      <pre data-lang="javascript"><code>const persona = { nombre: "Ander", edad: 28, ciudad: "Bilbao" };
+
+const nombre = persona.nombre;
+const edad = persona.edad;
+const ciudad = persona.ciudad;
+
+console.log(nombre, edad, ciudad);</code></pre>
+
+      <h4>Con destructuring (forma moderna)</h4>
+      <pre data-lang="javascript"><code>const persona = { nombre: "Ander", edad: 28, ciudad: "Bilbao" };
+
+const { nombre, edad, ciudad } = persona;
+
+console.log(nombre, edad, ciudad);</code></pre>
+
+      <p>¡De <strong>3 líneas a 1</strong>! Más limpio, más legible.</p>
+
+      <h3>Destructuring de objetos</h3>
+
+      <h4>Básico</h4>
+      <pre data-lang="javascript"><code>const usuario = {
+  nombre: "Ander",
+  email: "ander@email.com"
+};
+
+const { nombre, email } = usuario;
+console.log(nombre); // "Ander"
+console.log(email);  // "ander@email.com"</code></pre>
+
+      <h4>Renombrar variables</h4>
+      <p>Si quieres usar otro nombre, usa <code>:</code> para asignar un alias.</p>
+      <pre data-lang="javascript"><code>const usuario = { nombre: "Ander" };
+
+const { nombre: nombreUsuario } = usuario;
+console.log(nombreUsuario); // "Ander"</code></pre>
+
+      <h4>Valores por defecto</h4>
+      <p>Si la propiedad no existe, puedes asignar un valor por defecto.</p>
+      <pre data-lang="javascript"><code>const config = { tema: "oscuro" };
+
+const { tema, idioma = "español" } = config;
+console.log(tema);   // "oscuro"
+console.log(idioma); // "español" (valor por defecto)</code></pre>
+
+      <h4>Destructuring anidado</h4>
+      <pre data-lang="javascript"><code>const empresa = {
+  nombre: "Bidaiatzen",
+  direccion: {
+    ciudad: "Bilbao",
+    pais: "España"
+  }
+};
+
+const { direccion: { ciudad, pais } } = empresa;
+console.log(ciudad); // "Bilbao"
+console.log(pais);   // "España"</code></pre>
+
+      <h3>Destructuring de arrays</h3>
+      <p>A diferencia de los objetos, los arrays se destructuran <strong>por posición</strong>.</p>
+
+      <h4>Básico</h4>
+      <pre data-lang="javascript"><code>const colores = ["rojo", "verde", "azul"];
+
+const [primero, segundo, tercero] = colores;
+console.log(primero); // "rojo"
+console.log(segundo); // "verde"
+console.log(tercero); // "azul"</code></pre>
+
+      <h4>Saltar elementos</h4>
+      <pre data-lang="javascript"><code>const numeros = [1, 2, 3, 4, 5];
+
+const [primero, , tercero, , quinto] = numeros;
+console.log(primero, tercero, quinto); // 1 3 5</code></pre>
+
+      <h4>Combinado con el operador rest (<code>...</code>)</h4>
+      <pre data-lang="javascript"><code>const numeros = [1, 2, 3, 4, 5];
+
+const [primero, segundo, ...resto] = numeros;
+console.log(primero); // 1
+console.log(segundo); // 2
+console.log(resto);   // [3, 4, 5]</code></pre>
+
+      <h4>Intercambio de variables (truco famoso)</h4>
+      <pre data-lang="javascript"><code>let a = 1;
+let b = 2;
+
+[a, b] = [b, a];
+
+console.log(a); // 2
+console.log(b); // 1</code></pre>
+      <p>¡Sin variables temporales! 🎉</p>
+
+      <h3>Casos de uso reales</h3>
+
+      <h4>En parámetros de función</h4>
+      <pre data-lang="javascript"><code>// Sin destructuring
+function crearUsuario(opciones) {
+  const nombre = opciones.nombre;
+  const email = opciones.email;
+  const edad = opciones.edad || 18;
+}
+
+// Con destructuring
+function crearUsuario({ nombre, email, edad = 18 }) {
+  console.log(nombre, email, edad);
+}
+
+crearUsuario({ nombre: "Ander", email: "a@b.com" });
+// "Ander" "a@b.com" 18</code></pre>
+
+      <h4>Devolver múltiples valores de una función</h4>
+      <pre data-lang="javascript"><code>function dimensiones() {
+  return { ancho: 1920, alto: 1080 };
+}
+
+const { ancho, alto } = dimensiones();
+console.log(ancho, alto); // 1920 1080</code></pre>
+
+      <h4>Importaciones de módulos</h4>
+      <pre data-lang="javascript"><code>import { useState, useEffect } from "react";</code></pre>
+      <p>Esto en sí mismo es destructuring de los exports del módulo.</p>
+
+      <h3>Tabla resumen</h3>
+      <table>
+        <thead>
+          <tr><th>Tipo</th><th>Sintaxis</th><th>Característica clave</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Objeto</td><td><code>const { a, b } = obj;</code></td><td>Por nombre de propiedad</td></tr>
+          <tr><td>Array</td><td><code>const [a, b] = arr;</code></td><td>Por posición</td></tr>
+          <tr><td>Renombrar</td><td><code>const { a: x } = obj;</code></td><td>Usa otro nombre</td></tr>
+          <tr><td>Por defecto</td><td><code>const { a = 1 } = obj;</code></td><td>Valor si es undefined</td></tr>
+          <tr><td>Rest</td><td><code>const [a, ...resto] = arr;</code></td><td>Captura el resto</td></tr>
+          <tr><td>Anidado</td><td><code>const { a: { b } } = obj;</code></td><td>Profundidad arbitraria</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         5. SPREAD OPERATOR
+         ═══════════════════════════════════════════════════════════════ -->
+    <section id="spread">
+      <h2><span class="section-number">5</span> ¿Qué hace el operador de extensión?</h2>
+
+      <p>El <strong>operador de extensión</strong> (o <em>spread operator</em>), escrito con tres puntos <code>...</code>, sirve para <strong>expandir</strong> los elementos de un iterable (array, objeto, string) donde se esperan múltiples elementos.</p>
+
+      <h3>¿Qué hace exactamente?</h3>
+      <p>Imagina una caja con varios objetos dentro y quieres "vaciar" esa caja en otro sitio. El spread operator hace justo eso: <strong>descompone</strong> una colección y la expande elemento por elemento.</p>
+
+      <pre data-lang="javascript"><code>const numeros = [1, 2, 3];
+
+console.log(numeros);    // [1, 2, 3]   ← un array
+console.log(...numeros); // 1 2 3       ← tres números separados</code></pre>
+
+      <h3>Casos de uso principales</h3>
+
+      <h4>1. Copiar arrays</h4>
+      <pre data-lang="javascript"><code>const original = [1, 2, 3];
+const copia = [...original];
+
+copia.push(4);
+console.log(original); // [1, 2, 3]      ← no se modifica
+console.log(copia);    // [1, 2, 3, 4]</code></pre>
+
+      <div class="alert alert-info">
+        💡 Hace una <strong>copia superficial</strong> (shallow copy). Para arrays anidados, los elementos internos siguen siendo referencias.
+      </div>
+
+      <h4>2. Combinar arrays</h4>
+      <pre data-lang="javascript"><code>const frutas = ["manzana", "pera"];
+const verduras = ["lechuga", "tomate"];
+
+const comida = [...frutas, ...verduras];
+console.log(comida);
+// ["manzana", "pera", "lechuga", "tomate"]</code></pre>
+
+      <h4>3. Insertar elementos en cualquier posición</h4>
+      <pre data-lang="javascript"><code>const lista = ["a", "b", "e"];
+const completa = ["INICIO", ...lista, "c", "d", "FIN"];
+
+console.log(completa);
+// ["INICIO", "a", "b", "e", "c", "d", "FIN"]</code></pre>
+
+      <h4>4. Pasar arrays como argumentos a funciones</h4>
+      <pre data-lang="javascript"><code>function sumar(a, b, c) {
+  return a + b + c;
+}
+
+const numeros = [1, 2, 3];
+console.log(sumar(...numeros)); // 6</code></pre>
+
+      <h4>5. Encontrar máximo/mínimo de un array</h4>
+      <pre data-lang="javascript"><code>const numeros = [10, 5, 8, 23, 1, 17];
+
+console.log(Math.max(...numeros)); // 23
+console.log(Math.min(...numeros)); // 1</code></pre>
+
+      <h3>Spread con objetos (ES2018)</h3>
+
+      <h4>Copiar objetos</h4>
+      <pre data-lang="javascript"><code>const persona = { nombre: "Ander", edad: 28 };
+const copia = { ...persona };
+
+copia.edad = 29;
+console.log(persona.edad); // 28  ← no se modifica
+console.log(copia.edad);   // 29</code></pre>
+
+      <h4>Combinar objetos</h4>
+      <pre data-lang="javascript"><code>const datosBasicos = { nombre: "Ander", edad: 28 };
+const datosContacto = { email: "a@b.com", telefono: "123" };
+
+const usuarioCompleto = { ...datosBasicos, ...datosContacto };
+// { nombre: "Ander", edad: 28, email: "a@b.com", telefono: "123" }</code></pre>
+
+      <h4>Sobrescribir propiedades</h4>
+      <pre data-lang="javascript"><code>const original = { nombre: "Ander", ciudad: "Madrid" };
+const actualizado = { ...original, ciudad: "Bilbao" };
+
+console.log(actualizado);
+// { nombre: "Ander", ciudad: "Bilbao" }</code></pre>
+
+      <p>Esto es <strong>muy útil</strong> para actualizar el estado de forma inmutable (Redux, React, etc.).</p>
+
+      <h3>Spread con strings</h3>
+      <pre data-lang="javascript"><code>const palabra = "Ander";
+const letras = [...palabra];
+
+console.log(letras); // ["A", "n", "d", "e", "r"]</code></pre>
+
+      <h3>Spread vs. Rest: NO confundir</h3>
+      <p>Aunque usan la misma sintaxis (<code>...</code>), tienen propósitos opuestos.</p>
+
+      <table>
+        <thead>
+          <tr><th></th><th>Spread</th><th>Rest</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Propósito</strong></td><td><strong>Expande</strong> elementos</td><td><strong>Agrupa</strong> elementos</td></tr>
+          <tr><td><strong>Dónde se usa</strong></td><td>En llamadas / construyendo arrays/objetos</td><td>En parámetros de función o destructuring</td></tr>
+          <tr><td><strong>Ejemplo</strong></td><td><code>fn(...arr)</code></td><td><code>function fn(...args) {}</code></td></tr>
+        </tbody>
+      </table>
+
+      <h4>Ejemplo de spread (expande)</h4>
+      <pre data-lang="javascript"><code>const arr = [1, 2, 3];
+const nuevoArr = [...arr, 4]; // [1, 2, 3, 4]</code></pre>
+
+      <h4>Ejemplo de rest (agrupa)</h4>
+      <pre data-lang="javascript"><code>function sumar(...numeros) {
+  return numeros.reduce((acc, n) =&gt; acc + n, 0);
+}
+
+sumar(1, 2, 3, 4); // 10</code></pre>
+
+      <div class="alert alert-info">
+        🧠 <strong>Truco mnemotécnico:</strong> si los <code>...</code> están <strong>a la derecha del igual</strong> o dentro de una llamada → spread. Si están <strong>a la izquierda del igual</strong> o en parámetros → rest.
+      </div>
+
+      <h3>Casos de uso reales</h3>
+
+      <h4>React: actualizar estado de forma inmutable</h4>
+      <pre data-lang="javascript"><code>// Añadir un elemento a un array sin mutarlo
+setItems([...items, nuevoItem]);
+
+// Actualizar una propiedad de un objeto sin mutarlo
+setUsuario({ ...usuario, edad: 29 });</code></pre>
+
+      <h4>Eliminar duplicados de un array</h4>
+      <pre data-lang="javascript"><code>const array = [1, 2, 2, 3, 3, 3, 4];
+const sinDuplicados = [...new Set(array)];
+console.log(sinDuplicados); // [1, 2, 3, 4]</code></pre>
+
+      <h4>Convertir un NodeList a array</h4>
+      <pre data-lang="javascript"><code>const elementos = document.querySelectorAll("div");
+const array = [...elementos]; // ahora es un array real</code></pre>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         6. POO
+         ═══════════════════════════════════════════════════════════════ -->
+    <section id="poo">
+      <h2><span class="section-number">6</span> ¿Qué es la programación orientada a objetos?</h2>
+
+      <p>La <strong>Programación Orientada a Objetos</strong> (POO o OOP en inglés) es un paradigma de programación que organiza el código en torno a <strong>objetos</strong> que combinan datos y comportamiento. Es uno de los paradigmas más utilizados en el desarrollo de software.</p>
+
+      <h3>¿Qué es la POO?</h3>
+      <p>En lugar de escribir el código como una secuencia de instrucciones (programación procedural), la POO modela el mundo real como <strong>entidades</strong> (objetos) que tienen:</p>
+      <ul>
+        <li><strong>Atributos</strong> (datos / propiedades)</li>
+        <li><strong>Métodos</strong> (comportamientos / funciones)</li>
+      </ul>
+
+      <h4>Analogía del mundo real</h4>
+      <p>Imagina un <strong>coche</strong>:</p>
+      <pre data-lang="esquema"><code>🚗 Coche
+├── Atributos:
+│   ├── color: "rojo"
+│   ├── marca: "Toyota"
+│   └── velocidad: 0
+└── Métodos:
+    ├── acelerar()
+    ├── frenar()
+    └── encender()</code></pre>
+
+      <p>En POO, "Coche" sería una <strong>clase</strong> (un molde) y un coche concreto sería un <strong>objeto</strong> (una instancia).</p>
+
+      <h3>Los 4 pilares de la POO</h3>
+
+      <h4>1. 🔒 Encapsulamiento</h4>
+      <p>Significa <strong>proteger los datos</strong> de un objeto, exponiendo solo lo necesario.</p>
+
+      <pre data-lang="javascript"><code>class CuentaBancaria {
+  #saldo; // propiedad privada (con #)
+
+  constructor(saldoInicial) {
+    this.#saldo = saldoInicial;
+  }
+
+  consultarSaldo() {
+    return this.#saldo;
+  }
+
+  ingresar(cantidad) {
+    if (cantidad &gt; 0) this.#saldo += cantidad;
+  }
+}
+
+const cuenta = new CuentaBancaria(1000);
+cuenta.ingresar(500);
+console.log(cuenta.consultarSaldo()); // 1500
+// console.log(cuenta.#saldo); ❌ Error: propiedad privada</code></pre>
+
+      <h4>2. 🧬 Herencia</h4>
+      <p>Permite que una clase <strong>herede atributos y métodos</strong> de otra clase. Se evita duplicar código.</p>
+
+      <pre data-lang="javascript"><code>class Animal {
+  constructor(nombre) {
+    this.nombre = nombre;
+  }
+  comer() {
+    console.log(`${this.nombre} está comiendo`);
+  }
+}
+
+class Perro extends Animal {
+  ladrar() {
+    console.log(`${this.nombre} dice: ¡Guau!`);
+  }
+}
+
+const rex = new Perro("Rex");
+rex.comer();  // "Rex está comiendo"  (heredado)
+rex.ladrar(); // "Rex dice: ¡Guau!"   (propio)</code></pre>
+
+      <h4>3. 🎭 Polimorfismo</h4>
+      <p>Significa que distintos objetos pueden <strong>responder al mismo método de formas diferentes</strong>.</p>
+
+      <pre data-lang="javascript"><code>class Animal {
+  hacerSonido() {
+    console.log("Sonido genérico");
+  }
+}
+
+class Perro extends Animal {
+  hacerSonido() {
+    console.log("Guau guau");
+  }
+}
+
+class Gato extends Animal {
+  hacerSonido() {
+    console.log("Miau");
+  }
+}
+
+const animales = [new Perro(), new Gato(), new Animal()];
+animales.forEach(a =&gt; a.hacerSonido());
+// Guau guau
+// Miau
+// Sonido genérico</code></pre>
+
+      <h4>4. 🎯 Abstracción</h4>
+      <p>Esconder los detalles complejos y exponer solo lo importante. Cuando usas <code>array.sort()</code>, no necesitas saber cómo está implementado el algoritmo de ordenación.</p>
+
+      <h3>Clases en JavaScript (ES6)</h3>
+      <p>JavaScript introdujo la sintaxis de <code>class</code> en ES6, aunque por debajo sigue usando prototipos.</p>
+
+      <h4>Sintaxis básica</h4>
+      <pre data-lang="javascript"><code>class Persona {
+  // Constructor: se ejecuta al crear una instancia
+  constructor(nombre, edad) {
+    this.nombre = nombre;
+    this.edad = edad;
+  }
+
+  // Método
+  saludar() {
+    console.log(`Hola, soy ${this.nombre} y tengo ${this.edad} años.`);
+  }
+}
+
+// Crear una instancia
+const ander = new Persona("Ander", 28);
+ander.saludar(); // "Hola, soy Ander y tengo 28 años."</code></pre>
+
+      <h4>Métodos estáticos</h4>
+      <p>Pertenecen a la clase, no a las instancias.</p>
+      <pre data-lang="javascript"><code>class Calculadora {
+  static sumar(a, b) {
+    return a + b;
+  }
+}
+
+console.log(Calculadora.sumar(3, 4)); // 7
+// No necesitas instanciar la clase</code></pre>
+
+      <h4>Getters y Setters</h4>
+      <pre data-lang="javascript"><code>class Producto {
+  constructor(precio) {
+    this._precio = precio;
+  }
+
+  get precio() {
+    return `${this._precio}€`;
+  }
+
+  set precio(nuevoPrecio) {
+    if (nuevoPrecio &lt; 0) throw new Error("Precio no válido");
+    this._precio = nuevoPrecio;
+  }
+}
+
+const p = new Producto(100);
+console.log(p.precio); // "100€"
+p.precio = 150;
+console.log(p.precio); // "150€"</code></pre>
+
+      <h3>Herencia con <code>extends</code> y <code>super</code></h3>
+      <pre data-lang="javascript"><code>class Vehiculo {
+  constructor(marca) {
+    this.marca = marca;
+  }
+  describir() {
+    console.log(`Vehículo de marca ${this.marca}`);
+  }
+}
+
+class Coche extends Vehiculo {
+  constructor(marca, modelo) {
+    super(marca); // llama al constructor del padre
+    this.modelo = modelo;
+  }
+  describir() {
+    super.describir(); // llama al método del padre
+    console.log(`Modelo: ${this.modelo}`);
+  }
+}
+
+const miCoche = new Coche("Toyota", "Corolla");
+miCoche.describir();
+// "Vehículo de marca Toyota"
+// "Modelo: Corolla"</code></pre>
+
+      <h3>Ejemplo completo: sistema de usuarios</h3>
+      <pre data-lang="javascript"><code>class Usuario {
+  #password; // privada
+
+  constructor(nombre, email, password) {
+    this.nombre = nombre;
+    this.email = email;
+    this.#password = password;
+    this.fechaRegistro = new Date();
+  }
+
+  saludar() {
+    return `Hola, soy ${this.nombre}`;
+  }
+
+  validarPassword(intento) {
+    return intento === this.#password;
+  }
+}
+
+class Admin extends Usuario {
+  constructor(nombre, email, password, permisos = []) {
+    super(nombre, email, password);
+    this.permisos = permisos;
+  }
+
+  saludar() {
+    return `${super.saludar()} y soy administrador`;
+  }
+
+  añadirPermiso(permiso) {
+    this.permisos.push(permiso);
+  }
+}
+
+const ander = new Admin("Ander", "a@b.com", "secret123", ["leer"]);
+console.log(ander.saludar());
+// "Hola, soy Ander y soy administrador"
+
+ander.añadirPermiso("escribir");
+console.log(ander.permisos); // ["leer", "escribir"]</code></pre>
+
+      <h3>Tabla de conceptos clave</h3>
+      <table>
+        <thead>
+          <tr><th>Concepto</th><th>Qué es</th><th>Palabra clave</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Clase</td><td>Plantilla / molde</td><td><code>class</code></td></tr>
+          <tr><td>Objeto / Instancia</td><td>Producto creado a partir de una clase</td><td><code>new</code></td></tr>
+          <tr><td>Constructor</td><td>Función que inicializa la instancia</td><td><code>constructor()</code></td></tr>
+          <tr><td>Método</td><td>Función dentro de una clase</td><td>(función)</td></tr>
+          <tr><td>Atributo</td><td>Variable dentro de una clase</td><td><code>this.x</code></td></tr>
+          <tr><td>Herencia</td><td>Una clase deriva de otra</td><td><code>extends</code></td></tr>
+          <tr><td>Llamar al padre</td><td>Acceder a la clase padre</td><td><code>super</code></td></tr>
+          <tr><td>Estático</td><td>Pertenece a la clase, no a instancias</td><td><code>static</code></td></tr>
+          <tr><td>Privado</td><td>Solo accesible dentro de la clase</td><td><code>#</code></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         7. PROMESAS
+         ═══════════════════════════════════════════════════════════════ -->
+    <section id="promesas">
+      <h2><span class="section-number">7</span> ¿Qué es una promesa en JavaScript?</h2>
+
+      <p>Las <strong>promesas</strong> (Promises) son objetos especiales que representan el <strong>resultado eventual</strong> de una operación asíncrona. Es decir, una operación que <strong>tarda en completarse</strong> (como una llamada a un servidor, leer un archivo, etc.).</p>
+
+      <h3>¿Por qué necesitamos promesas?</h3>
+      <p>JavaScript es <strong>single-thread</strong>: solo puede hacer una cosa a la vez. Si tuviera que esperar a que termine una operación lenta, bloquearía todo el programa.</p>
+
+      <p>Las promesas son la forma moderna de manejar <strong>operaciones asíncronas</strong> sin caer en el famoso <em>"callback hell"</em>.</p>
+
+      <h4>El problema antes de las promesas: Callback Hell</h4>
+      <pre data-lang="javascript"><code>pedirDatos(usuario, function(datos) {
+  procesarDatos(datos, function(procesados) {
+    guardarDatos(procesados, function(guardados) {
+      enviarEmail(guardados, function(email) {
+        console.log("¡Listo!");
+        // 😱 indentación infinita y código difícil de mantener
+      });
+    });
+  });
+});</code></pre>
+
+      <h4>La solución con promesas</h4>
+      <pre data-lang="javascript"><code>pedirDatos(usuario)
+  .then(procesarDatos)
+  .then(guardarDatos)
+  .then(enviarEmail)
+  .then(() =&gt; console.log("¡Listo!"))
+  .catch(error =&gt; console.error(error));</code></pre>
+
+      <h3>Los 3 estados de una promesa</h3>
+      <div class="diagrama">
+        <div class="diagrama-state pending">⏳ pending (pendiente)</div>
+        <div class="diagrama-arrow">↓</div>
+        <div style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap; justify-content: center;">
+          <div class="diagrama-state fulfilled">✅ fulfilled (cumplida)</div>
+          <span style="color: var(--text-muted);">o</span>
+          <div class="diagrama-state rejected">❌ rejected (rechazada)</div>
+        </div>
+      </div>
+
+      <table>
+        <thead><tr><th>Estado</th><th>Significado</th></tr></thead>
+        <tbody>
+          <tr><td><strong>pending</strong></td><td>La operación todavía no ha terminado</td></tr>
+          <tr><td><strong>fulfilled</strong></td><td>La operación se completó con éxito</td></tr>
+          <tr><td><strong>rejected</strong></td><td>La operación falló</td></tr>
+        </tbody>
+      </table>
+
+      <p>Una vez que una promesa cambia de <code>pending</code> a <code>fulfilled</code> o <code>rejected</code>, <strong>ya no puede cambiar más</strong>.</p>
+
+      <h3>Crear una promesa</h3>
+      <pre data-lang="javascript"><code>const miPromesa = new Promise((resolve, reject) =&gt; {
+  // Operación asíncrona
+  const exito = true;
+
+  if (exito) {
+    resolve("¡Todo bien!"); // se cumple
+  } else {
+    reject("Algo falló"); // se rechaza
+  }
+});</code></pre>
+
+      <h4>Ejemplo realista: esperar X milisegundos</h4>
+      <pre data-lang="javascript"><code>function esperar(ms) {
+  return new Promise((resolve) =&gt; {
+    setTimeout(() =&gt; resolve("¡Tiempo cumplido!"), ms);
+  });
+}
+
+esperar(2000).then(mensaje =&gt; console.log(mensaje));
+// Tras 2 segundos: "¡Tiempo cumplido!"</code></pre>
+
+      <h3>Consumir promesas: <code>.then()</code>, <code>.catch()</code>, <code>.finally()</code></h3>
+
+      <h4><code>.then()</code> — cuando la promesa se cumple</h4>
+      <pre data-lang="javascript"><code>fetch("https://api.example.com/datos")
+  .then(respuesta =&gt; respuesta.json())
+  .then(datos =&gt; console.log(datos));</code></pre>
+
+      <h4><code>.catch()</code> — cuando la promesa falla</h4>
+      <pre data-lang="javascript"><code>fetch("https://api.example.com/datos")
+  .then(respuesta =&gt; respuesta.json())
+  .catch(error =&gt; console.error("Hubo un error:", error));</code></pre>
+
+      <h4><code>.finally()</code> — siempre se ejecuta (cumpla o falle)</h4>
+      <pre data-lang="javascript"><code>mostrarLoader();
+
+fetch("https://api.example.com/datos")
+  .then(respuesta =&gt; respuesta.json())
+  .then(datos =&gt; mostrarDatos(datos))
+  .catch(error =&gt; mostrarError(error))
+  .finally(() =&gt; ocultarLoader());</code></pre>
+
+      <h3>Encadenar promesas</h3>
+      <p>Cada <code>.then()</code> devuelve una nueva promesa, lo que permite encadenarlas.</p>
+
+      <pre data-lang="javascript"><code>obtenerUsuario(1)
+  .then(usuario =&gt; obtenerPedidos(usuario.id))
+  .then(pedidos =&gt; calcularTotal(pedidos))
+  .then(total =&gt; console.log(`Total: ${total}€`))
+  .catch(error =&gt; console.error("Algo falló:", error));</code></pre>
+
+      <h3>Métodos estáticos útiles de <code>Promise</code></h3>
+
+      <h4><code>Promise.all()</code> — espera a que todas se cumplan</h4>
+      <pre data-lang="javascript"><code>const p1 = fetch("/api/usuarios");
+const p2 = fetch("/api/productos");
+const p3 = fetch("/api/pedidos");
+
+Promise.all([p1, p2, p3])
+  .then(([usuarios, productos, pedidos]) =&gt; {
+    console.log("Todo cargado");
+  })
+  .catch(err =&gt; console.error("Una falló, todo aborta"));</code></pre>
+
+      <h4><code>Promise.allSettled()</code> — espera a todas, sin importar si fallan</h4>
+      <pre data-lang="javascript"><code>Promise.allSettled([p1, p2, p3])
+  .then(resultados =&gt; {
+    resultados.forEach(r =&gt; {
+      if (r.status === "fulfilled") console.log("OK:", r.value);
+      else console.log("Error:", r.reason);
+    });
+  });</code></pre>
+
+      <h4><code>Promise.race()</code> — devuelve la primera que se resuelva</h4>
+      <pre data-lang="javascript"><code>const lento = new Promise(r =&gt; setTimeout(() =&gt; r("lento"), 3000));
+const rapido = new Promise(r =&gt; setTimeout(() =&gt; r("rápido"), 1000));
+
+Promise.race([lento, rapido]).then(r =&gt; console.log(r));
+// "rápido"</code></pre>
+
+      <h4><code>Promise.any()</code> — devuelve la primera que se cumpla</h4>
+      <pre data-lang="javascript"><code>Promise.any([promesaQueFalla, promesaQueFunciona])
+  .then(valor =&gt; console.log(valor));</code></pre>
+
+      <h3>Tabla resumen de métodos</h3>
+      <table>
+        <thead>
+          <tr><th>Método</th><th>Espera a...</th><th>Si una falla...</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>Promise.all</code></td><td>Todas</td><td>Falla todo</td></tr>
+          <tr><td><code>Promise.allSettled</code></td><td>Todas</td><td>Devuelve resultados de todas</td></tr>
+          <tr><td><code>Promise.race</code></td><td>La primera (cumpla o falle)</td><td>Depende</td></tr>
+          <tr><td><code>Promise.any</code></td><td>La primera que cumpla</td><td>Solo si todas fallan</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Caso de uso real: llamada a una API</h3>
+      <pre data-lang="javascript"><code>function obtenerUsuario(id) {
+  return fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+    .then(respuesta =&gt; {
+      if (!respuesta.ok) {
+        throw new Error(`Error HTTP: ${respuesta.status}`);
+      }
+      return respuesta.json();
+    });
+}
+
+obtenerUsuario(1)
+  .then(usuario =&gt; {
+    console.log("Usuario:", usuario.name);
+    console.log("Email:", usuario.email);
+  })
+  .catch(error =&gt; {
+    console.error("Algo salió mal:", error.message);
+  });</code></pre>
+
+      <div class="alert alert-info">
+        💡 <strong>Buenas prácticas:</strong> siempre maneja los errores con <code>.catch()</code>, devuelve valores en cada <code>.then()</code> y no anides <code>.then()</code> dentro de otros <code>.then()</code>.
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         8. ASYNC / AWAIT
+         ═══════════════════════════════════════════════════════════════ -->
+    <section id="async">
+      <h2><span class="section-number">8</span> ¿Qué hacen <code>async</code> y <code>await</code>?</h2>
+
+      <p><code>async</code> y <code>await</code> son palabras clave introducidas en ES2017 que <strong>simplifican enormemente</strong> el trabajo con promesas. Permiten escribir código asíncrono que <strong>parece síncrono</strong>, mucho más fácil de leer y mantener.</p>
+
+      <h3>¿Qué hacen exactamente?</h3>
+      <p>Te permiten <strong>esperar</strong> a que una promesa se resuelva antes de continuar, sin usar <code>.then()</code>. El código asíncrono pasa a leerse de arriba abajo, como si fuera secuencial.</p>
+
+      <h4>Comparación visual</h4>
+      <pre data-lang="javascript"><code>// Con .then() (promesas tradicionales)
+function obtenerDatos() {
+  return fetch("/api/usuarios")
+    .then(res =&gt; res.json())
+    .then(datos =&gt; {
+      console.log(datos);
+      return datos;
+    });
+}
+
+// Con async/await (forma moderna)
+async function obtenerDatos() {
+  const res = await fetch("/api/usuarios");
+  const datos = await res.json();
+  console.log(datos);
+  return datos;
+}</code></pre>
+
+      <p>¡Mismo resultado, pero el segundo se lee como una receta paso a paso! 🎉</p>
+
+      <h3>La palabra clave <code>async</code></h3>
+      <p><code>async</code> se pone <strong>delante de una función</strong> para marcarla como asíncrona. Esto hace dos cosas:</p>
+      <ol>
+        <li>La función <strong>siempre devuelve una promesa</strong>, aunque tú devuelvas un valor normal.</li>
+        <li>Habilita el uso de <code>await</code> dentro de ella.</li>
+      </ol>
+
+      <pre data-lang="javascript"><code>async function saludar() {
+  return "Hola";
+}
+
+saludar(); // Promise { "Hola" }
+
+saludar().then(v =&gt; console.log(v)); // "Hola"</code></pre>
+
+      <h4>Sintaxis con arrow functions</h4>
+      <pre data-lang="javascript"><code>const saludar = async () =&gt; "Hola";
+const sumar = async (a, b) =&gt; a + b;</code></pre>
+
+      <h3>La palabra clave <code>await</code></h3>
+      <p><code>await</code> solo funciona <strong>dentro de funciones <code>async</code></strong>. Pausa la ejecución de la función hasta que la promesa se resuelva, devolviendo el valor.</p>
+
+      <pre data-lang="javascript"><code>async function ejemplo() {
+  console.log("1");
+  const resultado = await new Promise(r =&gt; {
+    setTimeout(() =&gt; r("listo"), 2000);
+  });
+  console.log("2", resultado);
+  console.log("3");
+}
+
+ejemplo();
+// 1
+// (espera 2 segundos)
+// 2 listo
+// 3</code></pre>
+
+      <div class="alert alert-info">
+        💡 <strong>Importante:</strong> <code>await</code> solo pausa la función <code>async</code> donde está, <strong>no bloquea</strong> todo el programa. JavaScript sigue ejecutando otras tareas en paralelo.
+      </div>
+
+      <h3>Manejo de errores con <code>try/catch</code></h3>
+      <p>Con <code>.then()</code> se usa <code>.catch()</code>. Con <code>async/await</code> puedes usar el clásico <code>try/catch</code>, lo cual unifica el manejo de errores síncronos y asíncronos.</p>
+
+      <pre data-lang="javascript"><code>async function obtenerUsuario(id) {
+  try {
+    const res = await fetch(`/api/usuarios/${id}`);
+    if (!res.ok) throw new Error(`Error HTTP: ${res.status}`);
+    const datos = await res.json();
+    return datos;
+  } catch (error) {
+    console.error("Algo falló:", error.message);
+    return null;
+  }
+}</code></pre>
+
+      <h3>Llamadas en paralelo</h3>
+      <p><code>await</code> por defecto es <strong>secuencial</strong>: cada <code>await</code> espera a que termine el anterior. Si quieres que varias promesas corran <strong>en paralelo</strong>, usa <code>Promise.all</code>.</p>
+
+      <h4>Secuencial (lento)</h4>
+      <pre data-lang="javascript"><code>async function lento() {
+  const a = await fetch("/a"); // 2s
+  const b = await fetch("/b"); // 2s más
+  const c = await fetch("/c"); // 2s más
+  // Total: 6 segundos ⏱
+}</code></pre>
+
+      <h4>Paralelo (rápido)</h4>
+      <pre data-lang="javascript"><code>async function rapido() {
+  const [a, b, c] = await Promise.all([
+    fetch("/a"),
+    fetch("/b"),
+    fetch("/c")
+  ]);
+  // Total: 2 segundos ⚡
+}</code></pre>
+
+      <h3>Caso de uso real</h3>
+      <pre data-lang="javascript"><code>async function obtenerInfoCompleta(usuarioId) {
+  try {
+    // 1. Obtener el usuario
+    const usuario = await fetch(`/api/usuarios/${usuarioId}`).then(r =&gt; r.json());
+
+    // 2. Obtener sus pedidos y favoritos en paralelo
+    const [pedidos, favoritos] = await Promise.all([
+      fetch(`/api/pedidos?user=${usuarioId}`).then(r =&gt; r.json()),
+      fetch(`/api/favoritos?user=${usuarioId}`).then(r =&gt; r.json())
+    ]);
+
+    return { usuario, pedidos, favoritos };
+  } catch (err) {
+    console.error("Error obteniendo datos:", err);
+    throw err;
+  }
+}
+
+obtenerInfoCompleta(1)
+  .then(info =&gt; console.log("Datos:", info))
+  .catch(err =&gt; console.error("Falló:", err));</code></pre>
+
+      <h3>.then() vs async/await</h3>
+      <table>
+        <thead>
+          <tr><th>Aspecto</th><th><code>.then()</code></th><th><code>async/await</code></th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Legibilidad</td><td>Encadenamiento</td><td>Lineal, secuencial</td></tr>
+          <tr><td>Manejo de errores</td><td><code>.catch()</code></td><td><code>try/catch</code></td></tr>
+          <tr><td>Variables intermedias</td><td>Difícil</td><td>Fácil</td></tr>
+          <tr><td>Curva de aprendizaje</td><td>Media</td><td>Baja (parece síncrono)</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Cosas a recordar</h3>
+      <ol>
+        <li><code>async</code> convierte una función para que <strong>siempre devuelva una promesa</strong>.</li>
+        <li><code>await</code> solo funciona <strong>dentro de funciones <code>async</code></strong>.</li>
+        <li><code>await</code> <strong>no bloquea</strong> el hilo principal — solo pausa la función <code>async</code> donde está.</li>
+        <li>Para errores, <strong><code>try/catch</code></strong> es tu amigo.</li>
+        <li>Para llamadas independientes, <strong><code>Promise.all</code></strong> es mucho más rápido.</li>
+      </ol>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         EJERCICIOS
+         ═══════════════════════════════════════════════════════════════ -->
+    <section id="ejercicios">
+      <h2><span class="section-number">💻</span> Ejercicios prácticos</h2>
+
+      <p>Como parte del CheckPoint, se han implementado tres ejercicios usando los conceptos aprendidos. Puedes ver el código fuente en la carpeta <code>/ejercicios</code> o ejecutarlos en vivo desde el navegador en la <a href="ejercicios/ejercicios.html"><strong>página de ejercicios interactivos</strong></a>.</p>
+
+      <div class="exercise-box">
+        <h4>1️⃣ Bucle <code>for</code> que imprime nombres de una lista</h4>
+        <pre data-lang="javascript"><code>const miLista = ["velma", "exploradora", "jane", "john", "harry"];
+
+for (let i = 0; i &lt; miLista.length; i++) {
+  console.log(miLista[i]);
+}
+
+// Salida:
+// velma
+// exploradora
+// jane
+// john
+// harry</code></pre>
+      </div>
+
+      <div class="exercise-box">
+        <h4>2️⃣ Bucle <code>while</code> que recorre la misma lista</h4>
+        <pre data-lang="javascript"><code>const miLista = ["velma", "exploradora", "jane", "john", "harry"];
+let contador = 0;
+
+while (contador &lt; miLista.length) {
+  console.log(miLista[contador]);
+  contador++;
+}
+
+// El contador evita el bucle infinito incrementándose en cada vuelta</code></pre>
+      </div>
+
+      <div class="exercise-box">
+        <h4>3️⃣ Función de flecha que devuelve "Hola mundo"</h4>
+        <pre data-lang="javascript"><code>const saludar = () =&gt; "Hola mundo";
+
+console.log(saludar()); // "Hola mundo"</code></pre>
+      </div>
+
+      <p style="text-align: center; margin-top: 40px;">
+        <a href="ejercicios/ejercicios.html" style="display: inline-block; padding: 14px 32px; background: var(--gradient); color: white; border-radius: 8px; font-weight: 600;">▶️ Ver demostración interactiva de los ejercicios</a>
+      </p>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="footer">
+      <p>Documentación creada por <strong>Ander Bilbao Castejón</strong></p>
+      <p>CheckPoint 8 · Bottega University · 2026</p>
+      <p>
+        <a href="https://github.com/emotIQ14/BottegaUniversity8">📂 Repositorio en GitHub</a>
+        ·
+        <a href="ejercicios/ejercicios.html">💻 Ejercicios interactivos</a>
+      </p>
+    </footer>
+  </main>
+
+  <button class="back-to-top" aria-label="Volver arriba">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
