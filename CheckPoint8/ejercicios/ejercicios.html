@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💻 Ejercicios prácticos | CheckPoint 8</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='80'%3E💻%3C/text%3E%3C/svg%3E">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0d1117;
+      --bg-card: #161b22;
+      --bg-code: #010409;
+      --border: #30363d;
+      --text: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #bc8cff;
+      --success: #3fb950;
+      --warning: #d29922;
+      --gradient: linear-gradient(135deg, #58a6ff 0%, #bc8cff 100%);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(88, 166, 255, 0.15);
+      border: 1px solid rgba(88, 166, 255, 0.3);
+      color: var(--accent);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .nav-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 8px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--accent);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .nav-link:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .ejercicio {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 32px;
+      transition: all 0.3s;
+    }
+
+    .ejercicio:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(88, 166, 255, 0.15);
+    }
+
+    .ejercicio-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ejercicio-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--gradient);
+      color: white;
+      font-weight: 700;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .ejercicio h2 {
+      font-size: 1.5rem;
+      color: var(--text);
+    }
+
+    .ejercicio-descripcion {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .codigo {
+      background: var(--bg-code);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 16px;
+      font-family: "Fira Code", "Monaco", monospace;
+      font-size: 0.92rem;
+      overflow-x: auto;
+      white-space: pre;
+      color: #c9d1d9;
+      position: relative;
+    }
+
+    .codigo::before {
+      content: "JavaScript";
+      position: absolute;
+      top: 8px;
+      right: 16px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    .controles {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 10px 24px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .btn-run {
+      background: var(--gradient);
+      color: white;
+    }
+
+    .btn-run:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(88, 166, 255, 0.4);
+    }
+
+    .btn-clear {
+      background: var(--bg-code);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .btn-clear:hover {
+      color: var(--text);
+      border-color: var(--text-muted);
+    }
+
+    .salida {
+      background: var(--bg-code);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      min-height: 100px;
+      font-family: "Fira Code", "Monaco", monospace;
+      font-size: 0.95rem;
+      color: var(--success);
+      white-space: pre-wrap;
+      position: relative;
+    }
+
+    .salida::before {
+      content: "▶ Consola";
+      position: absolute;
+      top: 8px;
+      right: 16px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    .salida:empty::after {
+      content: "(haz clic en \"Ejecutar\" para ver la salida)";
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .keyword { color: #ff7b72; }
+    .string { color: #a5d6ff; }
+    .number { color: #79c0ff; }
+    .comment { color: #8b949e; font-style: italic; }
+    .function { color: #d2a8ff; }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      .ejercicio { padding: 20px; }
+      .ejercicio-num { width: 40px; height: 40px; font-size: 1.1rem; }
+      .ejercicio h2 { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <span class="badge">CheckPoint 8 · Bottega University</span>
+      <h1>💻 Ejercicios prácticos</h1>
+      <p class="subtitle">Ejecuta los tres ejercicios directamente en tu navegador</p>
+      <a href="../docs/index.html" class="nav-link">📘 Volver a la documentación</a>
+    </header>
+
+    <!-- ─── EJERCICIO 1 ─── -->
+    <div class="ejercicio">
+      <div class="ejercicio-header">
+        <span class="ejercicio-num">1</span>
+        <h2>Bucle <code>for</code> que imprime los nombres de la lista</h2>
+      </div>
+      <p class="ejercicio-descripcion">
+        Recorremos la lista <code>["velma", "exploradora", "jane", "john", "harry"]</code> con un bucle <code>for</code> clásico, usando un índice numérico que arranca en 0 y se incrementa hasta llegar al final del array.
+      </p>
+      <div class="codigo"><span class="keyword">const</span> miLista = [<span class="string">"velma"</span>, <span class="string">"exploradora"</span>, <span class="string">"jane"</span>, <span class="string">"john"</span>, <span class="string">"harry"</span>];
+
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; miLista.length; i++) {
+  console.log(miLista[i]);
+}</div>
+      <div class="controles">
+        <button class="btn-run" onclick="ejecutar1()">▶ Ejecutar</button>
+        <button class="btn-clear" onclick="limpiar('out1')">Limpiar</button>
+      </div>
+      <div class="salida" id="out1"></div>
+    </div>
+
+    <!-- ─── EJERCICIO 2 ─── -->
+    <div class="ejercicio">
+      <div class="ejercicio-header">
+        <span class="ejercicio-num">2</span>
+        <h2>Bucle <code>while</code> que recorre la misma lista</h2>
+      </div>
+      <p class="ejercicio-descripcion">
+        Misma lista, pero ahora con un bucle <code>while</code>. La clave está en el <strong>contador</strong>: lo incrementamos en cada iteración para que la condición se vuelva falsa cuando termine la lista. Sin él, tendríamos un bucle infinito.
+      </p>
+      <div class="codigo"><span class="keyword">const</span> miLista = [<span class="string">"velma"</span>, <span class="string">"exploradora"</span>, <span class="string">"jane"</span>, <span class="string">"john"</span>, <span class="string">"harry"</span>];
+<span class="keyword">let</span> contador = <span class="number">0</span>;
+
+<span class="keyword">while</span> (contador &lt; miLista.length) {
+  console.log(miLista[contador]);
+  contador++; <span class="comment">// evita el bucle infinito</span>
+}</div>
+      <div class="controles">
+        <button class="btn-run" onclick="ejecutar2()">▶ Ejecutar</button>
+        <button class="btn-clear" onclick="limpiar('out2')">Limpiar</button>
+      </div>
+      <div class="salida" id="out2"></div>
+    </div>
+
+    <!-- ─── EJERCICIO 3 ─── -->
+    <div class="ejercicio">
+      <div class="ejercicio-header">
+        <span class="ejercicio-num">3</span>
+        <h2>Función de flecha que devuelve <code>"Hola mundo"</code></h2>
+      </div>
+      <p class="ejercicio-descripcion">
+        Una arrow function en su forma más concisa: sin parámetros, una sola expresión y retorno implícito (no necesita la palabra <code>return</code> ni llaves).
+      </p>
+      <div class="codigo"><span class="keyword">const</span> <span class="function">saludar</span> = () =&gt; <span class="string">"Hola mundo"</span>;
+
+console.log(<span class="function">saludar</span>());</div>
+      <div class="controles">
+        <button class="btn-run" onclick="ejecutar3()">▶ Ejecutar</button>
+        <button class="btn-clear" onclick="limpiar('out3')">Limpiar</button>
+      </div>
+      <div class="salida" id="out3"></div>
+    </div>
+
+    <footer>
+      <p>Hecho por <strong>Ander Bilbao Castejón</strong></p>
+      <p>
+        <a href="../README.md">📘 README</a>
+        ·
+        <a href="../docs/index.html">📚 Documentación completa</a>
+        ·
+        <a href="https://github.com/emotIQ14/BottegaUniversity">📂 GitHub</a>
+      </p>
+    </footer>
+
+  </div>
+
+  <script>
+    /* Ejecutadores de cada ejercicio.
+       Capturan los console.log y los muestran en su <div class="salida"> */
+
+    function imprimir(idDestino, texto) {
+      const out = document.getElementById(idDestino);
+      out.textContent += texto + "\n";
+    }
+
+    function limpiar(id) {
+      document.getElementById(id).textContent = "";
+    }
+
+    // ─── Ejercicio 1: bucle for ───
+    function ejecutar1() {
+      limpiar("out1");
+      const miLista = ["velma", "exploradora", "jane", "john", "harry"];
+      for (let i = 0; i < miLista.length; i++) {
+        imprimir("out1", miLista[i]);
+      }
+    }
+
+    // ─── Ejercicio 2: bucle while ───
+    function ejecutar2() {
+      limpiar("out2");
+      const miLista = ["velma", "exploradora", "jane", "john", "harry"];
+      let contador = 0;
+      while (contador < miLista.length) {
+        imprimir("out2", miLista[contador]);
+        contador++;
+      }
+    }
+
+    // ─── Ejercicio 3: arrow function ───
+    function ejecutar3() {
+      limpiar("out3");
+      const saludar = () => "Hola mundo";
+      imprimir("out3", saludar());
+    }
+  </script>
+</body>
+</html>
