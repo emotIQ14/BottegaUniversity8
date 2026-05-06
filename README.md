@@ -19,7 +19,7 @@ El CheckPoint 8 es **una documentación completa y profesional** sobre los conce
 
 👉 **[Acceder al CheckPoint 8](./CheckPoint8/README.md)**
 
-🌐 **[Ver la documentación online (GitHub Pages)](https://emotIQ14.github.io/BottegaUniversity/CheckPoint8/docs/)**
+🌐 **[Ver la documentación online (GitHub Pages)](https://emotiq14.github.io/BottegaUniversity8/CheckPoint8/docs/)**
 
 ### Conceptos cubiertos
 

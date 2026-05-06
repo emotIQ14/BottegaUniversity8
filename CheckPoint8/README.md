@@ -110,14 +110,14 @@ console.log(saludar()); // "Hola mundo"
 ### Opción 1 — GitHub Pages (recomendado)
 
 Una vez activado GitHub Pages en este repositorio:
-👉 **https://emotIQ14.github.io/BottegaUniversity/CheckPoint8/docs/**
+👉 **https://emotiq14.github.io/BottegaUniversity8/CheckPoint8/docs/**
 
 ### Opción 2 — Localmente
 
 Clona el repositorio y abre el archivo `docs/index.html` con tu navegador:
 
 ```bash
-git clone https://github.com/emotIQ14/BottegaUniversity.git
+git clone https://github.com/emotIQ14/BottegaUniversity8.git
 cd BottegaUniversity/CheckPoint8/docs
 open index.html   # macOS
 xdg-open index.html # Linux
